@@ -6,7 +6,7 @@ export const Container = styled.View(({ theme }) => ({
 }));
 
 export const Section = styled.View(({ theme }) => ({
-  gap: theme.spacing.xs,
+  gap: theme.spacing.sm,
 }));
 
 export const SwitchContainer = styled.View(({ theme }) => ({

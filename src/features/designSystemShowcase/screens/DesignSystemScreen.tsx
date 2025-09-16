@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 
 import Button from "@/designSystem/components/Button";
+import Input from "@/designSystem/components/Input";
 import Switch from "@/designSystem/components/Switch";
 import Text from "@/designSystem/components/Text";
 import { useThemeMode } from "@/designSystem/theme";
@@ -12,6 +13,7 @@ const DesignSystemScreen = () => {
   const { themeMode, toggleThemeMode } = useThemeMode();
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [inputValue, setInputValue] = useState("Some text");
 
   return (
     <ScrollView>
@@ -31,7 +33,7 @@ const DesignSystemScreen = () => {
 
         <Section>
           <Text variant="heading" size="lg">
-            State Toggles
+            Alternâncias de estado
           </Text>
           <SwitchContainer>
             <Text>Loading</Text>
@@ -47,11 +49,13 @@ const DesignSystemScreen = () => {
           <Text variant="heading" size="lg">
             Textos
           </Text>
-          <Text size="xl">Extra Large Text</Text>
-          <Text size="lg">Large Text</Text>
-          <Text size="md">Medium Text</Text>
-          <Text size="sm">Small Text</Text>
-          <Text size="xs">Extra Small Text</Text>
+          <View>
+            <Text size="xl">Extra Large Text</Text>
+            <Text size="lg">Large Text</Text>
+            <Text size="md">Medium Text</Text>
+            <Text size="sm">Small Text</Text>
+            <Text size="xs">Extra Small Text</Text>
+          </View>
         </Section>
 
         <Section>
@@ -61,7 +65,7 @@ const DesignSystemScreen = () => {
           <Button
             onPress={() => {}}
             variant="primary"
-            size="md"
+            size="sm"
             loading={isLoading}
             disabled={isDisabled}
           >
@@ -70,7 +74,7 @@ const DesignSystemScreen = () => {
           <Button
             onPress={() => {}}
             variant="outline"
-            size="md"
+            size="sm"
             loading={isLoading}
             disabled={isDisabled}
           >
@@ -79,12 +83,44 @@ const DesignSystemScreen = () => {
           <Button
             onPress={() => {}}
             variant="ghost"
-            size="md"
+            size="sm"
             loading={isLoading}
             disabled={isDisabled}
           >
             Ghost Button
           </Button>
+        </Section>
+
+        <Section>
+          <Text variant="heading" size="lg">
+            Campos de texto
+          </Text>
+          <Input
+            label="Label"
+            value={inputValue}
+            onChangeText={setInputValue}
+            placeholder="Placeholder"
+            size="sm"
+            editable={!isDisabled}
+          />
+          <Input
+            label="Helper Text"
+            value={inputValue}
+            onChangeText={setInputValue}
+            placeholder="Placeholder"
+            helperText="This is a helper text."
+            size="sm"
+            editable={!isDisabled}
+          />
+          <Input
+            label="Error State"
+            value={inputValue}
+            onChangeText={setInputValue}
+            placeholder="Placeholder"
+            error="This field has an error."
+            size="sm"
+            editable={!isDisabled}
+          />
         </Section>
       </Container>
     </ScrollView>
