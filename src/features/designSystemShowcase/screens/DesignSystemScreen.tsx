@@ -3,6 +3,7 @@ import { ScrollView, View } from "react-native";
 
 import Button from "@/designSystem/components/Button";
 import Input from "@/designSystem/components/Input";
+import { Surface } from "@/designSystem/components/Surface";
 import Switch from "@/designSystem/components/Switch";
 import Text from "@/designSystem/components/Text";
 import { useThemeMode } from "@/designSystem/theme";
@@ -121,6 +122,15 @@ const DesignSystemScreen = () => {
             size="sm"
             editable={!isDisabled}
           />
+        </Section>
+
+        <Section>
+          <Text variant="heading" size="lg">
+            Surperfícies
+          </Text>
+          <Surface>
+            <Text>This is a surface.</Text>
+          </Surface>
         </Section>
       </Container>
     </ScrollView>
