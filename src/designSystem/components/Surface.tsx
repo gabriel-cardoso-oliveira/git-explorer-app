@@ -6,7 +6,7 @@ interface SurfaceProps {
   children: React.ReactNode;
 }
 
-export const Surface: React.FC<SurfaceProps> = ({ children }) => {
+const Surface: React.FC<SurfaceProps> = ({ children }) => {
   const theme = useTheme();
 
   const surfaceStyles: StyleProp<ViewStyle> = {
@@ -17,3 +17,5 @@ export const Surface: React.FC<SurfaceProps> = ({ children }) => {
 
   return <View style={surfaceStyles}>{children}</View>;
 };
+
+export default Surface;

@@ -3,6 +3,7 @@ import styled from "@emotion/native";
 export const Container = styled.View(({ theme }) => ({
   flexGrow: 1,
   gap: theme.spacing.lg,
+  marginBottom: theme.spacing.lg,
 }));
 
 export const Section = styled.View(({ theme }) => ({

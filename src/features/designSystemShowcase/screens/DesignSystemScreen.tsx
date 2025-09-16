@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { ScrollView, View } from "react-native";
 
-import { Avatar } from "@/designSystem/components/Avatar";
+import Avatar from "@/designSystem/components/Avatar";
+import Badge from "@/designSystem/components/Badge";
 import Button from "@/designSystem/components/Button";
 import Input from "@/designSystem/components/Input";
-import { Surface } from "@/designSystem/components/Surface";
+import Surface from "@/designSystem/components/Surface";
 import Switch from "@/designSystem/components/Switch";
 import Text from "@/designSystem/components/Text";
 import { useThemeMode } from "@/designSystem/theme";
@@ -127,7 +128,7 @@ const DesignSystemScreen = () => {
 
         <Section>
           <Text variant="heading" size="lg">
-            Surperfícies
+            Surperfície
           </Text>
           <Surface>
             <Text>This is a surface.</Text>
@@ -144,6 +145,16 @@ const DesignSystemScreen = () => {
             }}
             size="md"
           />
+        </Section>
+
+        <Section>
+          <Text variant="heading" size="lg">
+            Marcações
+          </Text>
+          <Badge color="success">Open</Badge>
+          <Badge color="danger">Bug</Badge>
+          <Badge color="primary">Feature</Badge>
+          <Badge color="warning">Pending</Badge>
         </Section>
       </Container>
     </ScrollView>

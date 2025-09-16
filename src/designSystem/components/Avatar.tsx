@@ -15,7 +15,7 @@ const AvatarContainer = styled.View`
   border-radius: 9999px;
 `;
 
-export const Avatar: React.FC<AvatarProps> = ({ source, size = "md" }) => {
+const Avatar: React.FC<AvatarProps> = ({ source, size = "md" }) => {
   const theme = useTheme();
   const avatarDimension = theme.sizes[size] * 5;
 
@@ -27,3 +27,5 @@ export const Avatar: React.FC<AvatarProps> = ({ source, size = "md" }) => {
     </AvatarContainer>
   );
 };
+
+export default Avatar;
