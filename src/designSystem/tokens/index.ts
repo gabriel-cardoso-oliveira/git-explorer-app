@@ -3,7 +3,7 @@ export const sizeTokens = ["xs", "sm", "md", "lg", "xl"] as const;
 export const radiusTokens = ["sm", "md", "lg"] as const;
 
 const lightColors = {
-  primary: "#155c54;",
+  primary: "#155c54",
   background: "#ffffff",
   surface: "#f6f8fa",
   text: "#24292e",

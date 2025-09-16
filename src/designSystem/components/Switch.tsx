@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch as RNSwitch } from "react-native";
 
-import { useTheme } from "../theme";
+import { useTheme, useThemeMode } from "../theme";
 
 interface SwitchProps {
   value: boolean;
@@ -10,12 +10,17 @@ interface SwitchProps {
 
 const Switch: React.FC<SwitchProps> = ({ value, onValueChange }) => {
   const theme = useTheme();
+  const { themeMode } = useThemeMode();
 
   return (
     <RNSwitch
       value={value}
       onValueChange={onValueChange}
-      trackColor={{ false: theme.colors.border, true: theme.colors.text }}
+      trackColor={
+        themeMode === "dark"
+          ? { false: theme.colors.border, true: theme.colors.text }
+          : { false: theme.colors.border, true: theme.colors.border }
+      }
       thumbColor={theme.colors.primary}
     />
   );

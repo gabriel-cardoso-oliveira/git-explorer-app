@@ -9,7 +9,7 @@ export const Section = styled.View(({ theme }) => ({
   gap: theme.spacing.xs,
 }));
 
-export const ThemeSwitchContainer = styled.View(({ theme }) => ({
+export const SwitchContainer = styled.View(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   gap: theme.spacing.sm,
