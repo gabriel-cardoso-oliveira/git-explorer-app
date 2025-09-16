@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ScrollView, View } from "react-native";
 
+import { Avatar } from "@/designSystem/components/Avatar";
 import Button from "@/designSystem/components/Button";
 import Input from "@/designSystem/components/Input";
 import { Surface } from "@/designSystem/components/Surface";
@@ -131,6 +132,18 @@ const DesignSystemScreen = () => {
           <Surface>
             <Text>This is a surface.</Text>
           </Surface>
+        </Section>
+
+        <Section>
+          <Text variant="heading" size="lg">
+            Avatar
+          </Text>
+          <Avatar
+            source={{
+              uri: "https://avatars.githubusercontent.com/u/9919?s=200&v=4",
+            }}
+            size="md"
+          />
         </Section>
       </Container>
     </ScrollView>
