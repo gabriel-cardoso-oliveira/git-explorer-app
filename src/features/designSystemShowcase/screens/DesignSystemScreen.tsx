@@ -1,6 +1,7 @@
 import React from "react";
-import { ScrollView, Switch } from "react-native";
+import { ScrollView } from "react-native";
 
+import Switch from "@/designSystem/components/Switch";
 import Text from "@/designSystem/components/Text";
 import { useThemeMode } from "@/designSystem/theme";
 
