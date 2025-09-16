@@ -5,6 +5,7 @@ import React from "react";
 
 import { useTheme, useThemeMode } from "@/designSystem/theme";
 import DesignSystemScreen from "@/features/designSystemShowcase/screens/DesignSystemScreen";
+import RepositorySearchScreen from "@/features/repositorySearch/screens/SearchScreen";
 
 import { getScreenOptions } from "./config";
 import { RootStackParamList } from "./types";
@@ -25,7 +26,7 @@ const AppNavigator = () => {
         backgroundColor="transparent"
       />
       <Stack.Navigator
-        initialRouteName="Showcase"
+        initialRouteName="RepositorySearch"
         screenOptions={screenOptions}
       >
         <Stack.Screen
@@ -33,6 +34,13 @@ const AppNavigator = () => {
           component={DesignSystemScreen}
           options={{
             title: "Showcase do Design System",
+          }}
+        />
+        <Stack.Screen
+          name="RepositorySearch"
+          component={RepositorySearchScreen}
+          options={{
+            title: "Busca de Repositórios",
           }}
         />
       </Stack.Navigator>

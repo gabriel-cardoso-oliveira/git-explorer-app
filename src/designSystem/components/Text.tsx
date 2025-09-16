@@ -8,6 +8,7 @@ type Variant = "body" | "heading";
 
 interface TextProps {
   children: React.ReactNode;
+  textAlign?: "left" | "center" | "right";
   variant?: Variant;
   size?: Size;
   color?: Color;
@@ -18,6 +19,7 @@ const Text: React.FC<TextProps> = ({
   variant = "body",
   size = "md",
   color = "text",
+  textAlign = "left",
 }) => {
   const theme = useTheme();
   const fontSize = theme.sizes[size];
@@ -27,6 +29,7 @@ const Text: React.FC<TextProps> = ({
     color: fontColor,
     fontSize,
     ...(variant === "heading" && { fontWeight: "bold" }),
+    textAlign,
   };
 
   return <RNText style={textStyles}>{children}</RNText>;
