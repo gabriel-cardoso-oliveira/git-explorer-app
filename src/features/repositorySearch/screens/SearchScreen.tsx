@@ -1,6 +1,11 @@
 // import { useNavigation } from "@react-navigation/native";
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
-import { FlatList, View } from "react-native";
+import {
+  FlatList,
+  Keyboard,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 
 import { Repository } from "@/core/domain/entities/repository";
 import Text from "@/designSystem/components/Text";
@@ -68,40 +73,44 @@ const RepositorySearchScreen: React.FC = () => {
   }, [isFetching, hasNextPage, theme.colors.primary]);
 
   return (
-    <Container>
-      <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <Container>
+        <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
 
-      {isLoading && (
-        <ActivityIndicator size="large" color={theme.colors.primary} />
-      )}
-
-      {isError && (
-        <ErrorMessage message="Ocorreu um erro ao buscar os repositórios. Tente novamente." />
-      )}
-
-      <FlatList
-        data={repositories}
-        keyExtractor={(item) => String(item.id)}
-        renderItem={renderItem}
-        onEndReached={() => {
-          if (hasNextPage && !isFetching) {
-            fetchNextPage();
-          }
-        }}
-        onEndReachedThreshold={0.3}
-        ListEmptyComponent={
-          repositories.length === 0 && !isLoading ? (
-            <Text textAlign="center">Nenhum repositório encontrado.</Text>
-          ) : null
-        }
-        refreshing={isFetching && !isLoading}
-        onRefresh={() => refetch()}
-        ListFooterComponent={renderFooter()}
-        ItemSeparatorComponent={() => (
-          <View style={{ height: theme.spacing.sm }} />
+        {isLoading && (
+          <ActivityIndicator size="large" color={theme.colors.primary} />
         )}
-      />
-    </Container>
+
+        {isError && (
+          <ErrorMessage message="Ocorreu um erro ao buscar os repositórios. Tente novamente." />
+        )}
+
+        <FlatList
+          data={repositories}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={renderItem}
+          onEndReached={() => {
+            if (hasNextPage && !isFetching) {
+              fetchNextPage();
+            }
+          }}
+          onEndReachedThreshold={0.3}
+          ListEmptyComponent={
+            repositories.length === 0 && !isLoading ? (
+              <Text textAlign="center">Nenhum repositório encontrado.</Text>
+            ) : null
+          }
+          refreshing={isFetching && !isLoading}
+          onRefresh={() => refetch()}
+          ListFooterComponent={renderFooter()}
+          ItemSeparatorComponent={() => (
+            <View style={{ height: theme.spacing.sm }} />
+          )}
+          keyboardDismissMode="on-drag"
+          keyboardShouldPersistTaps="handled"
+        />
+      </Container>
+    </TouchableWithoutFeedback>
   );
 };
 
