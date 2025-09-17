@@ -52,6 +52,7 @@ const Input: React.FC<InputProps> = ({
       <RNTextInput
         style={inputStyle}
         placeholderTextColor={theme.colors.muted}
+        accessibilityLabel={label}
         {...rest}
       />
       {error ? (

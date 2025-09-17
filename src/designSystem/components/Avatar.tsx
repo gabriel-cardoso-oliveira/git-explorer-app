@@ -23,7 +23,11 @@ const Avatar: React.FC<AvatarProps> = ({ source, size = "md" }) => {
     <AvatarContainer
       style={{ width: avatarDimension, height: avatarDimension }}
     >
-      <Image source={source} style={{ width: "100%", height: "100%" }} />
+      <Image
+        testID="avatar-image"
+        source={source}
+        style={{ width: "100%", height: "100%" }}
+      />
     </AvatarContainer>
   );
 };

@@ -13,6 +13,7 @@ interface TextProps {
   size?: Size;
   color?: Color;
   numberOfLines?: number;
+  testID?: string;
 }
 
 const Text: React.FC<TextProps> = ({
@@ -22,6 +23,7 @@ const Text: React.FC<TextProps> = ({
   color = "text",
   textAlign = "left",
   numberOfLines,
+  testID,
 }) => {
   const theme = useTheme();
   const fontSize = theme.sizes[size];
@@ -35,7 +37,7 @@ const Text: React.FC<TextProps> = ({
   };
 
   return (
-    <RNText style={textStyles} numberOfLines={numberOfLines}>
+    <RNText testID={testID} style={textStyles} numberOfLines={numberOfLines}>
       {children}
     </RNText>
   );

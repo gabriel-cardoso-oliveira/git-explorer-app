@@ -14,6 +14,7 @@ const Switch: React.FC<SwitchProps> = ({ value, onValueChange }) => {
 
   return (
     <RNSwitch
+      testID="switch"
       value={value}
       onValueChange={onValueChange}
       trackColor={

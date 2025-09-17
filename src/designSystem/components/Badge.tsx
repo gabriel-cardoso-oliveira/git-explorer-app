@@ -28,8 +28,12 @@ const Badge: React.FC<BadgeProps> = ({
   };
 
   return (
-    <View style={badgeStyle}>
-      <Text size={size} color={color === "muted" ? "text" : "background"}>
+    <View testID="badge-container" style={badgeStyle}>
+      <Text
+        testID="badge-text"
+        size={size}
+        color={color === "muted" ? "text" : "background"}
+      >
         {children}
       </Text>
     </View>
