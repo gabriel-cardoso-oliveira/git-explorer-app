@@ -1,7 +1,10 @@
-import { NavigationContainer } from "@react-navigation/native";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useCallback } from "react";
+import { TouchableOpacity } from "react-native";
 
 import { useTheme, useThemeMode } from "@/designSystem/theme";
 import DesignSystemScreen from "@/features/designSystemShowcase/screens/DesignSystemScreen";
@@ -17,10 +20,40 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const AppNavigator = () => {
   const theme = useTheme();
   const { themeMode } = useThemeMode();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const screenOptions = getScreenOptions(theme);
 
+  const renderButtonBack = useCallback(
+    () => (
+      <TouchableOpacity onPress={() => navigation.goBack()} hitSlop={30}>
+        <AntDesign
+          name="left"
+          size={theme.sizes.md}
+          color={theme.colors.text}
+        />
+      </TouchableOpacity>
+    ),
+    [navigation, theme.colors.text, theme.sizes.md],
+  );
+
+  const renderButtonMenu = useCallback(
+    () => (
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Showcase")}
+        hitSlop={30}
+      >
+        <MaterialIcons
+          name="menu"
+          size={theme.sizes.xl}
+          color={theme.colors.text}
+        />
+      </TouchableOpacity>
+    ),
+    [navigation, theme.colors.text, theme.sizes.xl],
+  );
+
   return (
-    <NavigationContainer>
+    <>
       <StatusBar
         animated={true}
         style={themeMode === "light" ? "dark" : "light"}
@@ -36,6 +69,7 @@ const AppNavigator = () => {
           component={DesignSystemScreen}
           options={{
             title: "Showcase do Design System",
+            headerLeft: renderButtonBack,
           }}
         />
         <Stack.Screen
@@ -43,6 +77,7 @@ const AppNavigator = () => {
           component={RepositorySearchScreen}
           options={{
             title: "Busca de Repositórios",
+            headerRight: renderButtonMenu,
           }}
         />
         <Stack.Screen
@@ -50,6 +85,7 @@ const AppNavigator = () => {
           component={RepositoryDetailsScreen}
           options={{
             title: "Detalhes do Repositório",
+            headerLeft: renderButtonBack,
           }}
         />
         <Stack.Screen
@@ -57,10 +93,11 @@ const AppNavigator = () => {
           component={RepositoryIssuesScreen}
           options={{
             title: "Issues do Repositório",
+            headerLeft: renderButtonBack,
           }}
         />
       </Stack.Navigator>
-    </NavigationContainer>
+    </>
   );
 };
 

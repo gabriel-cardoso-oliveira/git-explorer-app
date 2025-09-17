@@ -1,3 +1,4 @@
+import { NavigationContainer } from "@react-navigation/native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { AppThemeProvider } from "@/designSystem/theme";
@@ -10,7 +11,9 @@ export default function App() {
   return (
     <AppThemeProvider>
       <QueryClientProvider client={queryClient}>
-        <AppNavigator />
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
       </QueryClientProvider>
     </AppThemeProvider>
   );
