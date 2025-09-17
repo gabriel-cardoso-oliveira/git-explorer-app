@@ -10,3 +10,9 @@ export interface Repository {
   description: string | null;
   full_name: string;
 }
+
+export interface RepositoryDetails extends Repository {
+  forks_count: number;
+  watchers_count: number;
+  open_issues_count: number;
+}

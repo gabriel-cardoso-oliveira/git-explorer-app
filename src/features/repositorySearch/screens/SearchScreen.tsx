@@ -1,4 +1,4 @@
-// import { useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import {
   FlatList,
@@ -10,9 +10,9 @@ import {
 import { Repository } from "@/core/domain/entities/repository";
 import Text from "@/designSystem/components/Text";
 import { useTheme } from "@/designSystem/theme";
+import { RootStackParamList } from "@/navigation/types";
 import ErrorMessage from "@/shared/components/ErrorMessage";
 
-// import { RootStackParamList } from "@/navigation/types";
 import { RepositoryItem } from "../components/RepositoryItem";
 import { SearchBar } from "../components/SearchBar";
 import { useSearchRepositories } from "../hooks/useSearchRepositories";
@@ -24,7 +24,7 @@ const RepositorySearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const theme = useTheme();
-  //   const navigation = useNavigation<RootStackParamList>();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   useEffect(() => {
     if (searchQuery === debouncedQuery) return;
@@ -51,9 +51,12 @@ const RepositorySearchScreen: React.FC = () => {
     [data],
   );
 
-  const handleRepositoryPress = useCallback((owner: string, repo: string) => {
-    // navigation.navigate("RepositoryDetails", { owner, repo });
-  }, []);
+  const handleRepositoryPress = useCallback(
+    (owner: string, repo: string) => {
+      navigation.navigate("RepositoryDetails", { owner, repo });
+    },
+    [navigation],
+  );
 
   const renderItem = useCallback(
     ({ item }: { item: Repository }) => (

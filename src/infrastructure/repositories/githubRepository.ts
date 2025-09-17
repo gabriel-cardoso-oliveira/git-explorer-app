@@ -1,5 +1,8 @@
 import { githubApi } from "@/core/api/githubApi";
-import { Repository } from "@/core/domain/entities/repository";
+import {
+  Repository,
+  RepositoryDetails,
+} from "@/core/domain/entities/repository";
 
 export interface SearchRepositoriesResponse {
   items: Repository[];
@@ -15,6 +18,16 @@ export const fetchRepositories = async (
   }
   const response = await githubApi.get<SearchRepositoriesResponse>(
     `/search/repositories?q=${query}&sort=stars&order=desc&page=${pageParam}&per_page=20`,
+  );
+  return response.data;
+};
+
+export const fetchRepositoryDetails = async (
+  owner: string,
+  repo: string,
+): Promise<RepositoryDetails> => {
+  const response = await githubApi.get<RepositoryDetails>(
+    `/repos/${owner}/${repo}`,
   );
   return response.data;
 };
