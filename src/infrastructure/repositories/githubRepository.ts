@@ -1,4 +1,5 @@
 import { githubApi } from "@/core/api/githubApi";
+import { Issue } from "@/core/domain/entities/issue";
 import {
   Repository,
   RepositoryDetails,
@@ -28,6 +29,17 @@ export const fetchRepositoryDetails = async (
 ): Promise<RepositoryDetails> => {
   const response = await githubApi.get<RepositoryDetails>(
     `/repos/${owner}/${repo}`,
+  );
+  return response.data;
+};
+
+export const fetchRepositoryIssues = async (
+  owner: string,
+  repo: string,
+  pageParam = 1,
+): Promise<Issue[]> => {
+  const response = await githubApi.get<Issue[]>(
+    `/repos/${owner}/${repo}/issues?state=open&page=${pageParam}&per_page=20`,
   );
   return response.data;
 };

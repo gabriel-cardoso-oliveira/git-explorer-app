@@ -6,6 +6,7 @@ import React from "react";
 import { useTheme, useThemeMode } from "@/designSystem/theme";
 import DesignSystemScreen from "@/features/designSystemShowcase/screens/DesignSystemScreen";
 import RepositoryDetailsScreen from "@/features/repositoryDetails/screens/RepositoryDetailsScreen";
+import RepositoryIssuesScreen from "@/features/repositoryIssues/screens/RepositoryIssuesScreen";
 import RepositorySearchScreen from "@/features/repositorySearch/screens/SearchScreen";
 
 import { getScreenOptions } from "./config";
@@ -49,6 +50,13 @@ const AppNavigator = () => {
           component={RepositoryDetailsScreen}
           options={{
             title: "Detalhes do Repositório",
+          }}
+        />
+        <Stack.Screen
+          name="RepositoryIssues"
+          component={RepositoryIssuesScreen}
+          options={{
+            title: "Issues do Repositório",
           }}
         />
       </Stack.Navigator>

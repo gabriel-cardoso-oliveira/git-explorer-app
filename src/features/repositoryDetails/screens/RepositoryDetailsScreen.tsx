@@ -1,6 +1,10 @@
-import { RouteProp, useRoute } from "@react-navigation/native";
-import React from "react";
-import { Alert } from "react-native";
+import {
+  NavigationProp,
+  RouteProp,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
+import React, { useCallback } from "react";
 
 import Badge from "@/designSystem/components/Badge";
 import Button from "@/designSystem/components/Button";
@@ -27,12 +31,20 @@ const RepositoryDetailsScreen: React.FC = () => {
   const route = useRoute<RepositoryDetailsRouteProp>();
   const { owner, repo } = route.params;
   const theme = useTheme();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const {
     data: details,
     isLoading: isLoadingDetails,
     isError: isErrorDetails,
   } = useRepositoryDetails(owner, repo);
+
+  const handleGoToIssues = useCallback(
+    (owner: string, repo: string) => {
+      navigation.navigate("RepositoryIssues", { owner, repo });
+    },
+    [navigation],
+  );
 
   if (isLoadingDetails) {
     return <ActivityIndicator size="large" color={theme.colors.primary} />;
@@ -64,7 +76,7 @@ const RepositoryDetailsScreen: React.FC = () => {
         )}
       </ContainerDetails>
       <Button
-        onPress={() => Alert.alert("Ação", "Abrir Issues do repositório...")}
+        onPress={() => handleGoToIssues(details.owner.login, details.name)}
       >
         Abrir Issues ({details.open_issues_count})
       </Button>

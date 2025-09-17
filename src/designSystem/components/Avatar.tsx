@@ -17,7 +17,7 @@ const AvatarContainer = styled.View`
 
 const Avatar: React.FC<AvatarProps> = ({ source, size = "md" }) => {
   const theme = useTheme();
-  const avatarDimension = theme.sizes[size] * 5;
+  const avatarDimension = theme.sizes[size] * 4;
 
   return (
     <AvatarContainer
