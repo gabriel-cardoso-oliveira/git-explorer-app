@@ -56,6 +56,10 @@ const RepositoryIssuesScreen: React.FC = () => {
     return null;
   }, [isFetchingIssues, hasNextPage, theme.colors.primary]);
 
+  if (isLoadingIssues) {
+    return <ActivityIndicator size="large" color={theme.colors.primary} />;
+  }
+
   if (isErrorIssues) {
     return (
       <ErrorMessage message="Ocorreu um erro ao buscar as issues do repositório. Tente novamente." />
