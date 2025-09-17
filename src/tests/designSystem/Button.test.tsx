@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 import Button from "@/designSystem/components/Button";
 import { tokens } from "@/designSystem/tokens";
 
-import { render, screen } from "./test-utils";
+import { render, screen } from "../test-utils";
 
 describe("Button", () => {
   const onPressMock = jest.fn();

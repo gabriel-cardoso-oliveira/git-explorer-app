@@ -81,7 +81,11 @@ const RepositorySearchScreen: React.FC = () => {
         <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
 
         {isLoading && (
-          <ActivityIndicator size="large" color={theme.colors.primary} />
+          <ActivityIndicator
+            testID="activity-indicator"
+            size="large"
+            color={theme.colors.primary}
+          />
         )}
 
         {isError && (

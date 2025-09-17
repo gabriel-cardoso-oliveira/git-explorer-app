@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 import Avatar from "@/designSystem/components/Avatar";
 import { tokens } from "@/designSystem/tokens";
 
-import { render, screen } from "./test-utils";
+import { render, screen } from "../test-utils";
 
 describe("Avatar", () => {
   const source = {

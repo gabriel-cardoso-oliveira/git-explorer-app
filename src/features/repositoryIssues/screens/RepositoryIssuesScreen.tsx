@@ -57,7 +57,13 @@ const RepositoryIssuesScreen: React.FC = () => {
   }, [isFetchingIssues, hasNextPage, theme.colors.primary]);
 
   if (isLoadingIssues) {
-    return <ActivityIndicator size="large" color={theme.colors.primary} />;
+    return (
+      <ActivityIndicator
+        testID="activity-indicator"
+        size="large"
+        color={theme.colors.primary}
+      />
+    );
   }
 
   if (isErrorIssues) {

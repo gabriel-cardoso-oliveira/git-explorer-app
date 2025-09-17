@@ -47,7 +47,13 @@ const RepositoryDetailsScreen: React.FC = () => {
   );
 
   if (isLoadingDetails) {
-    return <ActivityIndicator size="large" color={theme.colors.primary} />;
+    return (
+      <ActivityIndicator
+        testID="activity-indicator"
+        size="large"
+        color={theme.colors.primary}
+      />
+    );
   }
 
   if (isErrorDetails) {

@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 import Text from "@/designSystem/components/Text";
 import { tokens } from "@/designSystem/tokens";
 
-import { render, screen } from "./test-utils";
+import { render, screen } from "../test-utils";
 
 describe("Text", () => {
   it("renders children correctly", () => {

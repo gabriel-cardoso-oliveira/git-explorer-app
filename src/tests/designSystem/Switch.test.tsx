@@ -3,7 +3,7 @@ import React from "react";
 
 import Switch from "@/designSystem/components/Switch";
 
-import { render, screen } from "./test-utils";
+import { render, screen } from "../test-utils";
 
 describe("Switch", () => {
   it("renders with initial value and calls onValueChange", () => {

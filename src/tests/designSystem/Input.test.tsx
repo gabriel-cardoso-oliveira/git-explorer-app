@@ -4,7 +4,7 @@ import React from "react";
 import Input from "@/designSystem/components/Input";
 import { tokens } from "@/designSystem/tokens";
 
-import { render, screen } from "./test-utils";
+import { render, screen } from "../test-utils";
 
 describe("Input", () => {
   it("renders a text input with a label", () => {

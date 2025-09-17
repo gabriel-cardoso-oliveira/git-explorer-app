@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 import Badge from "@/designSystem/components/Badge";
 import { tokens } from "@/designSystem/tokens";
 
-import { render, screen } from "./test-utils";
+import { render, screen } from "../test-utils";
 
 describe("Badge", () => {
   it("renders children correctly", () => {

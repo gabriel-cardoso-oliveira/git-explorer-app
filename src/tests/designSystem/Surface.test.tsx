@@ -4,7 +4,7 @@ import { Text } from "react-native";
 import Surface from "@/designSystem/components/Surface";
 import { tokens } from "@/designSystem/tokens";
 
-import { render, screen } from "./test-utils";
+import { render, screen } from "../test-utils";
 
 describe("Surface", () => {
   it("renders children correctly", () => {
