@@ -37,6 +37,7 @@ const RepositoryDetailsScreen: React.FC = () => {
     data: details,
     isLoading: isLoadingDetails,
     isError: isErrorDetails,
+    error,
   } = useRepositoryDetails(owner, repo);
 
   const handleGoToIssues = useCallback(
@@ -56,10 +57,8 @@ const RepositoryDetailsScreen: React.FC = () => {
     );
   }
 
-  if (isErrorDetails) {
-    return (
-      <ErrorMessage message="Ocorreu um erro ao carregar os detalhes do repositório. Tente novamente." />
-    );
+  if (isErrorDetails && error) {
+    return <ErrorMessage message={error.message} />;
   }
 
   if (!details) {

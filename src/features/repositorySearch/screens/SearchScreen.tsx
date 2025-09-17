@@ -41,6 +41,7 @@ const RepositorySearchScreen: React.FC = () => {
     isFetching,
     isLoading,
     isError,
+    error,
     refetch,
     fetchNextPage,
     hasNextPage,
@@ -88,9 +89,7 @@ const RepositorySearchScreen: React.FC = () => {
           />
         )}
 
-        {isError && (
-          <ErrorMessage message="Ocorreu um erro ao buscar os repositórios. Tente novamente." />
-        )}
+        {isError && error && <ErrorMessage message={error.message} />}
 
         <FlatList
           data={repositories}

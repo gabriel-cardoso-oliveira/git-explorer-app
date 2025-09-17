@@ -28,6 +28,7 @@ const RepositoryIssuesScreen: React.FC = () => {
     isFetching: isFetchingIssues,
     isLoading: isLoadingIssues,
     isError: isErrorIssues,
+    error,
     fetchNextPage,
     hasNextPage,
     refetch: refetchIssues,
@@ -66,10 +67,8 @@ const RepositoryIssuesScreen: React.FC = () => {
     );
   }
 
-  if (isErrorIssues) {
-    return (
-      <ErrorMessage message="Ocorreu um erro ao buscar as issues do repositório. Tente novamente." />
-    );
+  if (isErrorIssues && error) {
+    return <ErrorMessage message={error.message} />;
   }
 
   return (
