@@ -25,7 +25,9 @@ export const RepositoryItem: React.FC<RepositoryItemProps> = ({
           por {repository.owner.login}
         </Text>
       </Header>
-      <Text color="muted">{repository.description}</Text>
+      <Text color="muted" numberOfLines={3}>
+        {repository.description}
+      </Text>
       <Footer>
         {repository.language && (
           <Badge color="primary">{repository.language}</Badge>

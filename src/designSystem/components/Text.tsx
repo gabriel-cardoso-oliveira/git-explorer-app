@@ -12,6 +12,7 @@ interface TextProps {
   variant?: Variant;
   size?: Size;
   color?: Color;
+  numberOfLines?: number;
 }
 
 const Text: React.FC<TextProps> = ({
@@ -20,6 +21,7 @@ const Text: React.FC<TextProps> = ({
   size = "md",
   color = "text",
   textAlign = "left",
+  numberOfLines,
 }) => {
   const theme = useTheme();
   const fontSize = theme.sizes[size];
@@ -32,7 +34,11 @@ const Text: React.FC<TextProps> = ({
     textAlign,
   };
 
-  return <RNText style={textStyles}>{children}</RNText>;
+  return (
+    <RNText style={textStyles} numberOfLines={numberOfLines}>
+      {children}
+    </RNText>
+  );
 };
 
 export default Text;
